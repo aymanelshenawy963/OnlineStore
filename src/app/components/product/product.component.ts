@@ -26,6 +26,14 @@ export class ProductComponent implements OnInit {
       this.products = data;
     });
   }
+
+  searchProducts(term: string) {
+  this.api.getProducts().subscribe(data => {
+    this.products = data.filter(p =>
+      p.name.toLowerCase().includes(term.toLowerCase())
+    );
+  });
+}
 }
 
 

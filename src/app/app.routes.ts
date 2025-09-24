@@ -1,13 +1,15 @@
 import { Routes } from '@angular/router';
-import { ProductComponent } from './components/product/product.component';
-import { CategoryComponent } from './components/category/category.component';
 import { HomeComponent } from './components/home/home.component';
+
+// import { ProductComponent } from './components/product/product.component';
+// import { CategoryComponent } from './components/category/category.component';
+// import { NotfoundComponent } from './components/notfound/notfound.component';
 
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  {path:'',redirectTo:'home',pathMatch:'full'},
   // { path: 'categories', component: CategoryComponent },
   // { path: 'products', component: ProductComponent },
-  // { path: 'categories/:categoryName', component: CategoryComponent },
-  { path: '**', redirectTo: '' }
+  // {path:'**',component:NotfoundComponent}
 ];
