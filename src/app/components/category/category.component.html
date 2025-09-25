@@ -1,6 +1,6 @@
-<div class="container my-3">
-  <select class="form-select w-50 mx-auto"  (change)="onCategoryChange($event)">
-    <option value="" disabled selected>-- Choose a category --</option>
-    <option *ngFor="let cat of categories" [value]="cat.id"> {{ cat.name }}</option>
+<div class="container ">
+  <select class="form-select  mx-auto"(change)="onCategoryChange($event)">
+    <option value="" disabled selected> Categories </option>
+    <option *ngFor="let cat of categories" [value]="cat.id"> {{cat.name}} </option>
   </select>
 </div>

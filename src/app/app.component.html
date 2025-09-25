@@ -1,8 +1,10 @@
-<app-navbar (search)="onSearch($event)"></app-navbar>
 
-<div class="container mt-4 ">
-  <app-category (categorySelected)="onCategorySelected($event)"></app-category>
+<app-navbar (search)="onSearch($event)" (categorySelected)="onCategorySelected($event)"></app-navbar>
+
+<div class="container mt-4 flex-fill ">
   <app-product #prod></app-product>
 </div>
-<app-footer></app-footer>
+
+ <app-footer></app-footer>
 <router-outlet></router-outlet>
+

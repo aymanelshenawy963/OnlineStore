@@ -15,6 +15,8 @@ export class CategoryComponent implements OnInit {
 
   constructor(private api: ApiService) {}
 
+  
+
   ngOnInit(): void {
     this.api.getCategories().subscribe(data => {
       this.categories = data;
@@ -25,6 +27,7 @@ export class CategoryComponent implements OnInit {
     const categoryId = Number(event.target.value);
     this.categorySelected.emit(categoryId);
   }
+
 }
 
 

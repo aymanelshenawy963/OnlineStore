@@ -13,11 +13,12 @@
           <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/categories']" [routerLinkActive]="['text-light']">Categories</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link " [routerLink]="['/products']" [routerLinkActive]="['text-light']" >Products</a>
         </li>
+        <li class="nav-item">
+           <app-category (categorySelected)="onCategorySelected($event)"></app-category>
+        </li>
+
       </ul>
 
       <ul class="navbar-nav ms-auto">

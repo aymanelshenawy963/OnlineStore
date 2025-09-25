@@ -1,5 +1,8 @@
-footer {
-  background-color: darkblue;
-  bottom: 0;
-  width: 100%;
+.bg-darkblue {
+  background-color: #0d1b2a;
 }
+
+footer{
+  margin-top: 87px;
+}
+

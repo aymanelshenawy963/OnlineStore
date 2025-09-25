@@ -1,0 +1,16 @@
+
+.form-select {
+  background-color: #0d1b2a;
+  color: #fff;
+  margin-top: 2px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding-left: 5px;
+
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path stroke='white' stroke-width='3' d='M7 10l5 5 5-5'/></svg>");
+  background-size: 18px;
+}
+
