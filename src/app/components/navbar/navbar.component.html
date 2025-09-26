@@ -15,6 +15,7 @@
         <li class="nav-item">
           <a class="nav-link " [routerLink]="['/products']" [routerLinkActive]="['text-light']" >Products</a>
         </li>
+        
         <li class="nav-item">
            <app-category (categorySelected)="onCategorySelected($event)"></app-category>
         </li>

@@ -1,10 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from "@angular/router";
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
@@ -13,7 +14,7 @@ export class CategoryComponent implements OnInit {
 
   @Output() categorySelected = new EventEmitter<number>();
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService ,private router: Router) {}
 
   
 
@@ -24,8 +25,19 @@ export class CategoryComponent implements OnInit {
   }
 
   onCategoryChange(event: any) {
-    const categoryId = Number(event.target.value);
-    this.categorySelected.emit(categoryId);
+    const categoryId =Number((event.target as HTMLSelectElement).value);
+     if (isNaN(categoryId)) {
+    return; // ignore if no value selected
+  }
+    if(categoryId ===-1){
+      this.categorySelected.emit(categoryId);
+      this.router.navigate(['/addcategory']);
+    }
+
+    else{
+      this.categorySelected.emit(categoryId);
+      this.router.navigate(['/home']);
+    }
   }
 
 }
