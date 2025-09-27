@@ -31,7 +31,7 @@ export class CategoryComponent implements OnInit {
   }
     if(categoryId ===-1){
       this.categorySelected.emit(categoryId);
-      this.router.navigate(['/addcategory']);
+      this.router.navigate(['/addcategory/0']);
     }
 
     else{
