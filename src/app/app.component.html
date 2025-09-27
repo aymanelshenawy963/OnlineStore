@@ -1,9 +1,10 @@
+<div class="app-wrapper d-flex flex-column min-vh-100">
 <app-navbar (search)="onSearch($event)" (categorySelected)="onCategorySelected($event)"></app-navbar>
 
 <div class="container mt-4 flex-fill ">
-  <app-product #prod></app-product>
+ <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
 
  <app-footer></app-footer>
+</div>

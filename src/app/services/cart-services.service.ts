@@ -6,6 +6,25 @@ import { Injectable } from '@angular/core';
 export class CartService {
   private cart: any[] = [];
 
+  constructor() {
+    if (this.isBrowser()) {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        this.cart = JSON.parse(savedCart);
+      }
+    }
+  }
+
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  }
+
+  private saveCart() {
+    if (this.isBrowser()) {
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    }
+  }
+
   getCart() {
     return this.cart;
   }
@@ -17,14 +36,17 @@ export class CartService {
     } else {
       this.cart.push({ ...product, quantity });
     }
+    this.saveCart();
   }
 
   removeFromCart(productId: number) {
     this.cart = this.cart.filter(item => item.id !== productId);
+    this.saveCart();
   }
 
   clearCart() {
     this.cart = [];
+    this.saveCart();
   }
 
   updateQuantity(productId: number, quantity: number) {
@@ -32,6 +54,7 @@ export class CartService {
     if (item) {
       item.quantity = quantity;
     }
+    this.saveCart();
   }
 
   getTotalPrice(): number {
