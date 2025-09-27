@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart-services.service';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,12 @@ import { CommonModule } from '@angular/common';
 export class ProductComponent implements OnInit {
   products: any[] = [];
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService , private cartService: CartService) {}
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+  }
+  
 
   ngOnInit(): void {
     this.api.getProducts().subscribe(data => {
