@@ -15,7 +15,7 @@
     <tbody>
       <tr *ngFor="let item of cart">
         <td>
-          <img [src]="item.image" alt="{{item.name}}" width="60" height="60" style="object-fit: contain;">
+          <img [src]="'assets/Images/' + item.image"  alt="{{item.name}}" width="60" height="60" style="object-fit: contain;">
         </td>
         <td>{{ item.name }}</td>
         <td>{{ item.price | currency }}</td>
@@ -44,6 +44,6 @@
     <h4>Total: {{ getTotalPrice() | currency }}</h4>
     <div>
     <a class="btn btn-secondary me-2" routerLink="/products">Continue Shopping</a>
-    <button class="btn btn-success">Checkout</button>
+    <button class="btn btn-success" (click)="checkout()">Checkout</button>
   </div>
 </div>
