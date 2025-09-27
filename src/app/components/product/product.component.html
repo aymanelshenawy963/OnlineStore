@@ -6,9 +6,17 @@
         <div class="card-body">
           <h5 class="card-title">{{ product.name }}</h5> <br>
           <p class="card-text">Price: {{ product.price }} EGP</p><br>
-           <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button><br>
+
+          <div class="quantity-control mb-2">
+            <button class="btn btn-sm btn-outline-secondary" (click)="decreaseQuantity(product)">-</button>
+            <input type="number" [(ngModel)]="product.quantity" min="1">
+            <button class="btn btn-sm btn-outline-secondary" (click)="increaseQuantity(product)">+</button>
+          </div>
+
+           <button class="btn btn-primary btn-sm mt-auto w-100" (click)="addToCart(product)"> Add to Cart</button><br>
         </div>
     </div>
   </div>
+</div>
 </div>
 

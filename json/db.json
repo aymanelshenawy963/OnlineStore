@@ -1,0 +1,64 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Electronics"
+    },
+    {
+      "id": 2,
+      "name": "Clothes"
+    },
+    {
+      "id": 3,
+      "name": "Books"
+    },
+    {
+      "id": 5,
+      "name": "cars"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Laptop",
+      "price": 15000,
+      "categoryId": 1,
+      "image": "laptop.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Phone",
+      "price": 8000,
+      "categoryId": 1,
+      "image": "phone.jpg"
+    },
+    {
+      "id": 3,
+      "name": "T-shirt",
+      "price": 200,
+      "categoryId": 2,
+      "image": "tshirt.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Jeans",
+      "price": 400,
+      "categoryId": 2,
+      "image": "jeans.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Novel",
+      "price": 100,
+      "categoryId": 3,
+      "image": "novel.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Dictionary",
+      "price": 250,
+      "categoryId": 3,
+      "image": "dictionary.jpg"
+    }
+  ]
+}
