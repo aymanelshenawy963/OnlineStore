@@ -15,10 +15,6 @@ export const routes: Routes = [
   // {path: 'addcategory', component: AddcategoryComponent },
   {path: 'addcategory/:id', component: AddcategoryComponent },
   { path: 'cart', component: ShoppingCartComponent },
-<<<<<<< Updated upstream
-   { path: 'products', component: ProductComponent },
-=======
   { path: 'products', component: ProductComponent },
->>>>>>> Stashed changes
   // {path:'**',component:NotfoundComponent}
 ];
