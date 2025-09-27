@@ -1,27 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CategoryComponent } from "./components/category/category.component";
-import { ProductComponent } from "./components/product/product.component";
+import { Component } from '@angular/core';
+import { RouterOutlet, Router } from '@angular/router';
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { FooterComponent } from "./components/footer/footer.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterOutlet, NavbarComponent, ProductComponent, FooterComponent],
+  imports: [CommonModule, RouterOutlet, NavbarComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-    @ViewChild('prod') productComp!: ProductComponent;
-
-  onCategorySelected(categoryId: number) {
-    this.productComp.loadProductsByCategory(categoryId);
-  }
+  constructor(private router: Router) {}
 
   onSearch(searchTerm: string) {
-  this.productComp.searchProducts(searchTerm);
-}
+    this.router.navigate(['/products'], { queryParams: { search: searchTerm } });
+  }
 }

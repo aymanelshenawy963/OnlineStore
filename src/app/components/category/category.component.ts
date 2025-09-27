@@ -5,7 +5,7 @@ import { Router, RouterLink } from "@angular/router";
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
@@ -16,7 +16,7 @@ export class CategoryComponent implements OnInit {
 
   constructor(private api: ApiService ,private router: Router) {}
 
-  
+
 
   ngOnInit(): void {
     this.api.getCategories().subscribe(data => {
@@ -36,7 +36,7 @@ export class CategoryComponent implements OnInit {
 
     else{
       this.categorySelected.emit(categoryId);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/products'], { queryParams: { category: categoryId } });
     }
   }
 
