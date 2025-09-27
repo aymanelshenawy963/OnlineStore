@@ -9,7 +9,8 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   {path:'',redirectTo:'home',pathMatch:'full'},
-  {path: 'addcategory', component: AddcategoryComponent },
+  // {path: 'addcategory', component: AddcategoryComponent },
+  {path: 'addcategory/:id', component: AddcategoryComponent },
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'products', component: ProductComponent },
   {path:'**',component:NotfoundComponent}

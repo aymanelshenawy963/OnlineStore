@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private baseUrl = 'http://localhost:3000';
-
   constructor(private http: HttpClient) {
     
   }
@@ -27,5 +26,12 @@ export class ApiService {
   addCategory(category: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/categories`, category);
   }
-  
+
+  editCategory(id:any,product:any){
+   return this.http.patch<any>(`${this.baseUrl}/categories/${id}`,product);
+  }
+ 
+  deleteCategory(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/categories/${id}`);
+  }
 }
