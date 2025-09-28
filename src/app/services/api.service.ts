@@ -34,4 +34,12 @@ export class ApiService {
   deleteCategory(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/categories/${id}`);
   }
+
+  addProduct(product: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/products`, product);
+  }
+
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/products/${id}`);
+  }
 }

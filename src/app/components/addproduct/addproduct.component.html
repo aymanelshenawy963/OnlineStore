@@ -1,1 +1,52 @@
-<p>addproduct works!</p>
+<div class="d-flex justify-content-center align-items-center vh-300" >
+  <form class="form-group" style="width: 700px;"  class="form-group" [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
+    <div class="mb-3">
+      <label for="product Name" class="form-label" >Product Name</label>
+      <input type="text" class="form-control" id="productName"  name="name" formControlName="name" placeholder="Enter product name" >
+          <!-- validation messeges  -->
+      <div *ngIf="productname.errors?.['required'] &&productname.touched" class="text-danger">
+     Product name is required
+    </div>
+      <div *ngIf="productname?.errors?.['minlength']" class="text-danger">
+      product name must be more than 3 characters
+    </div>
+    </div>
+
+     <div class="mb-3">
+      <label for="product price" class="form-label" >Product price</label>
+      <input type="number" class="form-control" id="productprice"  name="price" formControlName="price" placeholder="Enter product price" >
+        <!-- validation messeges  -->
+      <div *ngIf="productPrice.errors?.['required'] &&productname.touched" class="text-danger">
+     Product price is required
+    </div>
+      <div *ngIf="productPrice?.errors?.['min']" class="text-danger">
+      product price must be more than 0
+    </div>
+    </div>
+
+    <div class="mb-3">
+  <!-- <select class="form-select  mx-auto" (change)="onCategoryChange($event)"> -->
+   <select class="form-select mx-auto" formControlName="categoryId"> 
+  <option value="" disabled selected>Categories</option>
+  <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+</select>
+    <!-- validation messeges  -->
+      <div *ngIf="productCategoryId.errors?.['required'] &&productname.touched" class="text-danger">
+     Product category is required
+    </div>
+    </div>
+
+    <div class="mb-3">
+  <label for="formFile" class="form-label">product image</label>
+  <input class="form-control" type="file" id="formFile" name="image" formControlName="image" (change)="onFileSelected($event)">
+      <!-- validation messeges  -->
+      <div *ngIf="productImage.errors?.['required'] &&productname.touched" class="text-danger">
+     Product image is required
+    </div>
+  </div> 
+    <!-- button place  -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
