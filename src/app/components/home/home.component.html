@@ -1,1 +1,53 @@
+<div class="hero d-flex flex-column justify-content-center align-items-center text-center">
+  <h1>Welcome to Our Store</h1>
+  <p>Discover premium products at the best prices</p>
+  <a routerLink="/products" class="btn btn-primary btn-lg">Shop Now</a>
+</div>
+
+
+<!-- Why Us Section -->
+<div class="container text-center my-5 why-us">
+  <h2 class="mb-5 fw-bold">Why Shop With Us?</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="why-card p-4">
+        <i class="bi bi-truck fs-1 text-primary"></i>
+        <h5 class="mt-3">Fast Delivery</h5>
+        <p>We ensure quick and reliable shipping for all your orders.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="why-card p-4">
+        <i class="bi bi-shield-lock fs-1 text-primary"></i>
+        <h5 class="mt-3">Secure Payment</h5>
+        <p>Safe and trusted payment options for your peace of mind.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="why-card p-4">
+        <i class="bi bi-star fs-1 text-primary"></i>
+        <h5 class="mt-3">Top Quality</h5>
+        <p>Only the best products, carefully selected for you.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Featured Products -->
+<div class="container text-center my-5 featured-products">
+  <h2 class="mb-4">Featured Products</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-3 mb-3" *ngFor="let product of featuredProducts">
+      <div class="card h-100">
+        <img [src]="'assets/Images/' + product.image" class="card-img-top" alt="{{product.name}}">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.price }} EGP</p>
+          <a [routerLink]="['/detialedproduct', product.id]" class="btn btn-sm btn-primary mt-auto">View Product</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
