@@ -42,4 +42,11 @@ export class ApiService {
   deleteProduct(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/products/${id}`);
   }
+
+  getProductById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/products/${id}`);
+  }
+  getCategoriesById(id: any): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/categories/${id}`);
+  }
 }

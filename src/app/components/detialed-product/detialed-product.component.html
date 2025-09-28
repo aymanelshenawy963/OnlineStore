@@ -1,0 +1,16 @@
+<div class="card mb-3">
+  <img src="assets/Images/{{Product?.image}}" class="card-img-top" alt="{{Product?.name}}">
+  <div class="card-body">
+    <h5 class="card-title">{{Product?.name}}</h5>
+    <p class="card-text"> Price:{{Product?.price}} EGP</p>
+    <p class="card-text">Product Category: {{Category?.name}}</p>
+    <p class="card-text"><small class="text-muted"> product description :lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non inventore rerum soluta quis numquam, debitis rem doloribus minima asperiores quisquam aut maxime vel libero quos accusantium quod? Labore, sit natus?</small></p>
+  </div>
+  <br>
+   <button type="submit" class="btn btn-success" disabled>Add to cart</button> 
+  <br>
+   <button type="submit" class="btn btn-primary" [routerLink]="['/addproduct',Product?.id]">Edit</button>
+  <br>
+    <button type="submit" class="btn btn-danger" (click)="deleteProduct(Product?.id)">Delete</button>
+
+</div>

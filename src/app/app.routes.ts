@@ -5,6 +5,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AddproductComponent } from './components/addproduct/addproduct.component';
+import { DetialedProductComponent } from './components/detialed-product/detialed-product.component';
 
 
 export const routes: Routes = [
@@ -14,5 +15,6 @@ export const routes: Routes = [
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'products', component: ProductComponent },
   {path:'addproduct/:id',component:AddproductComponent},
+  {path:'detialedproduct/:id',component:DetialedProductComponent},
   {path:'**',component:NotfoundComponent}
 ];

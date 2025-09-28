@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart-services.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule , FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
