@@ -17,7 +17,6 @@ export class NavbarComponent {
   searchTerm: string = '';
 
   @Output() search = new EventEmitter<string>();
-  @Output() categorySelected = new EventEmitter<number>();
 
   // cartItemCount property removed to avoid duplicate identifier error
 
@@ -26,16 +25,25 @@ export class NavbarComponent {
   ngOnInit(): void {
     this.updateCartCount();
   }
+onSearch(event?: Event) {
+  if (event) event.preventDefault(); // يمنع الفورم من reload
+  if (!this.searchTerm.trim()) return;
 
-  onSearch() {
-    if (this.searchTerm.trim()) {
-      this.search.emit(this.searchTerm);
-    }
-  }
+  console.log('Searching for:', this.searchTerm);
+  this.search.emit(this.searchTerm);
 
-  onCategorySelected(categoryId: number) {
-    this.router.navigate(['/products'], { queryParams: { category: categoryId } });
-  }
+  // لو عاوز تنقل لصفحة البحث
+  this.router.navigate(['/products'], { queryParams: { search: this.searchTerm } });
+}
+
+
+
+
+
+onCategorySelected(categoryId: any) {
+  this.router.navigate(['/products'], { queryParams: { category: String(categoryId) } });
+}
+
   updateCartCount() {
     // No need to set cartItemCount, as the getter will always return the latest value
   }

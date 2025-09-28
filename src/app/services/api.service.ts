@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
   private baseUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) {
-    
+
   }
 
   getCategories(): Observable<any[]> {
@@ -19,7 +19,7 @@ export class ApiService {
     return this.http.get<any[]>(`${this.baseUrl}/products`);
   }
 
-  getProductsByCategory(categoryId: number): Observable<any[]> {
+  getProductsByCategory(categoryId: any): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/products?categoryId=${categoryId}`);
   }
 
@@ -30,8 +30,8 @@ export class ApiService {
   editCategory(id:any,product:any){
    return this.http.patch<any>(`${this.baseUrl}/categories/${id}`,product);
   }
- 
-  deleteCategory(id: number): Observable<any> {
+
+  deleteCategory(id: any): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/categories/${id}`);
   }
 
@@ -39,11 +39,11 @@ export class ApiService {
     return this.http.post<any>(`${this.baseUrl}/products`, product);
   }
 
-  deleteProduct(id: number): Observable<any> {
+  deleteProduct(id: any): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/products/${id}`);
   }
 
-  getProductById(id: number): Observable<any> {
+  getProductById(id: any): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/products/${id}`);
   }
   getCategoriesById(id: any): Observable<any> {

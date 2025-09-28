@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart-services.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit {
   products: any[] = [];
 
   constructor(
+    private router: Router,
     private api: ApiService,
     private cartService: CartService,
     private route: ActivatedRoute
@@ -24,14 +25,13 @@ export class ProductComponent implements OnInit {
 
   addToCart(product: any) {
     this.cartService.addToCart(product , product.quantity);
-    product.quantity = 1; 
+    product.quantity = 1;
   }
-
 
 ngOnInit(): void {
   this.route.queryParams.subscribe(params => {
     if (params['category']) {
-      this.loadProductsByCategory(+params['category']);
+      this.loadProductsByCategory(params['category']); 
     } else if (params['search']) {
       this.searchProducts(params['search']);
     } else {
@@ -45,7 +45,8 @@ ngOnInit(): void {
   });
 }
 
-  loadProductsByCategory(categoryId: number) {
+
+  loadProductsByCategory(categoryId: any) {
     this.api.getProductsByCategory(categoryId).subscribe(data => {
       this.products = data.map(p => ({
         ...p,
@@ -54,16 +55,25 @@ ngOnInit(): void {
     });
   }
 
-  searchProducts(term: string) {
-    this.api.getProducts().subscribe(data => {
-      this.products = data
-        .filter(p => p.name.toLowerCase().includes(term.toLowerCase()))
-        .map(p => ({
-          ...p,
-          quantity: 1
-        }));
-    });
-  }
+
+searchProducts(term: string) {
+  this.api.getProducts().subscribe(data => {
+    const results = data
+      .filter(p => p.name.toLowerCase().includes(term.toLowerCase()))
+      .map(p => ({
+        ...p,
+        quantity: 1
+      }));
+
+    if (results.length > 0) {
+      this.products = results;
+    } else {
+      this.router.navigate(['/notfoundproduct']);
+    }
+  });
+}
+
+
 
 increaseQuantity(product: any) {
     product.quantity++;

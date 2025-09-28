@@ -12,7 +12,6 @@ import { Router, RouterLink } from "@angular/router";
 export class CategoryComponent implements OnInit {
     categories: any[] = [];
 
-  @Output() categorySelected = new EventEmitter<number>();
 
   constructor(private api: ApiService ,private router: Router) {}
 
@@ -23,23 +22,20 @@ export class CategoryComponent implements OnInit {
       this.categories = data;
     });
   }
+@Output() categorySelected = new EventEmitter<string>();
 
-  onCategoryChange(event: any) {
-    const categoryId =Number((event.target as HTMLSelectElement).value);
-     if (isNaN(categoryId)) {
-    return; // ignore if no value selected
-  }
-    if(categoryId ===-1){
-      this.categorySelected.emit(categoryId);
-      this.router.navigate(['/addcategory/0']);
-    }
+onCategoryChange(event: any) {
+  const categoryId = (event.target as HTMLSelectElement).value;
 
-    else{
-      this.categorySelected.emit(categoryId);
-      this.router.navigate(['/products'], { queryParams: { category: categoryId } });
-    }
-  }
+  this.categorySelected.emit(categoryId);
+
+  this.router.navigate(['/products'], {
+    queryParams: { category: categoryId }
+  });
+}
 
 }
+
+
 
 

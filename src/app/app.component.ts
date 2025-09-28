@@ -17,7 +17,5 @@ export class AppComponent {
   onSearch(searchTerm: string) {
     this.router.navigate(['/products'], { queryParams: { search: searchTerm } });
   }
-  onCategorySelected(categoryId: number) {
-    this.router.navigate(['/products'], { queryParams: { category: categoryId } });
-  }
+
 }
