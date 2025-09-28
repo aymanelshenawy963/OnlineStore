@@ -38,6 +38,9 @@
 
     <div class="mb-3">
   <label for="formFile" class="form-label">product image</label>
+  <div *ngIf="pageId != 0 && productImage.value">
+  <img [src]="'assets/Images/' + productImage.value" width="150" class="mb-2" alt="">
+</div>
   <input class="form-control" type="file" id="formFile" name="image" formControlName="image" (change)="onFileSelected($event)">
       <!-- validation messeges  -->
       <div *ngIf="productImage.errors?.['required'] &&productname.touched" class="text-danger">

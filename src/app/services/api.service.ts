@@ -49,4 +49,7 @@ export class ApiService {
   getCategoriesById(id: any): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/categories/${id}`);
   }
+  editProduct(id:any,product:any){
+   return this.http.patch<any>(`${this.baseUrl}/products/${id}`,product);
+  }
 }

@@ -15,6 +15,7 @@ export class AddproductComponent implements OnInit {
  
     categories: any[] = [];
     pageId:any;
+    file:any;
 
   productForm=new FormGroup({
     name: new FormControl('',[Validators.required,Validators.minLength(3)]),
@@ -32,6 +33,14 @@ export class AddproductComponent implements OnInit {
   this.api.getCategories().subscribe((categories) => {
       this.categories = categories;
     })
+    if(this.pageId!=0){
+      this.api.getProductById(this.pageId).subscribe((data) => {
+        this.productname.setValue(data.name);
+        this.productPrice.setValue(data.price);
+        this.productCategoryId.setValue(data.categoryId);
+        this.productImage.setValue(data.image);
+      });
+    }
  }
 // getters part 
  get productname(){
@@ -65,7 +74,7 @@ onFileSelected(event: any) {
  
   onSubmit(productForm:FormGroup){
 if(productForm.valid){
-  if(this.pageId==0){
+  if(this.pageId==0){//add new product 
     this.api.addProduct(
     {
   name : this.productname.value,
@@ -73,18 +82,25 @@ if(productForm.valid){
   categoryId: this.productCategoryId.value,
   image: this.productImage.value
 }).subscribe({
-      next:()=>{this.router.navigate(['/addproduct/0']);
+      next:()=>{this.router.navigate(['/products']);
     this.productForm.reset();
       }
     });
   }
-  else{
+  else{// edite existing product
+    this.api.editProduct(this.pageId,{
+      name : this.productname.value,
+      price: this.productPrice.value,
+      categoryId: this.productCategoryId.value,
+      image: this.productImage.value 
+    }).subscribe({
+      next:()=>{this.router.navigate(['/detialedproduct',this.pageId]);}
+    })
+    }
 
 }
   }
 
  
-
-}
 
 }
