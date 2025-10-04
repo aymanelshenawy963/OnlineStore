@@ -1,8 +1,8 @@
 .hero {
   height: 100vh;
   background: url('/assets/Images/online-shopping.png') no-repeat center center;
-  background-size: cover;  
-  background-attachment: fixed; 
+  background-size: cover;
+  background-attachment: fixed;
   color: rgb(0, 0, 0);
   text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.808);
   padding: 0 20px;
@@ -39,8 +39,8 @@
 }
 
 .featured-products .card-img-top {
-  height: 220px; 
-  object-fit: cover; 
+  height: 220px;
+  object-fit: cover;
 }
 
 .featured-products .card-body {

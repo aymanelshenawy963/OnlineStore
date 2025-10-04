@@ -2,7 +2,6 @@ import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CategoryComponent } from "../category/category.component";
-import { ProductComponent } from '../product/product.component';
 import { CartService } from '../../services/cart-services.service';
 import { CommonModule } from '@angular/common';
 
@@ -26,13 +25,12 @@ export class NavbarComponent {
     this.updateCartCount();
   }
 onSearch(event?: Event) {
-  if (event) event.preventDefault(); // يمنع الفورم من reload
+  if (event) event.preventDefault();
   if (!this.searchTerm.trim()) return;
 
   console.log('Searching for:', this.searchTerm);
   this.search.emit(this.searchTerm);
 
-  // لو عاوز تنقل لصفحة البحث
   this.router.navigate(['/products'], { queryParams: { search: this.searchTerm } });
 }
 

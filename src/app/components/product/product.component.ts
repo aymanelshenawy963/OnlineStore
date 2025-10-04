@@ -31,9 +31,9 @@ export class ProductComponent implements OnInit {
 ngOnInit(): void {
   this.route.queryParams.subscribe(params => {
     if (params['category']) {
-      this.loadProductsByCategory(params['category']); 
+      this.loadProductsByCategory(params['category']);
     } else if (params['search']) {
-      this.searchProducts(params['search']);
+      this.search(params['search']);
     } else {
       this.api.getProducts().subscribe(data => {
         this.products = data.map(p => ({
@@ -56,22 +56,36 @@ ngOnInit(): void {
   }
 
 
-searchProducts(term: string) {
-  this.api.getProducts().subscribe(data => {
-    const results = data
-      .filter(p => p.name.toLowerCase().includes(term.toLowerCase()))
-      .map(p => ({
+
+
+search(term: string) {
+  const lowerTerm = term.toLowerCase();
+
+  this.api.getProducts().subscribe(products => {
+    this.api.getCategories().subscribe(categories => {
+
+      // نضيف اسم التصنيف لكل منتج
+      products = products.map(p => ({
         ...p,
+        categoryName: categories.find(c => c.id == p.categoryId)?.name || '',
         quantity: 1
       }));
 
-    if (results.length > 0) {
-      this.products = results;
-    } else {
-      this.router.navigate(['/notfoundproduct']);
-    }
+      // البحث بالاسم أو التصنيف
+      const results = products.filter(p =>
+        p.name.toLowerCase().includes(lowerTerm) ||
+        p.categoryName.toLowerCase().includes(lowerTerm)
+      );
+
+      if (results.length > 0) {
+        this.products = results;
+      } else {
+        this.router.navigate(['/notfoundproduct']);
+      }
+    });
   });
 }
+
 
 
 

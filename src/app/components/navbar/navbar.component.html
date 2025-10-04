@@ -29,18 +29,15 @@
        <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="/cart">
-            <i class="bi bi-cart-fill"></i> 
+            <i class="bi bi-cart-fill"></i>
             <span class="badge bg-darkblue">{{ cartItemCount }}</span>
           </a>
         </li>
       </ul>
 
       <div class="search d-flex">
-        <input class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              [(ngModel)]="searchTerm"
-              (keydown.enter)="$event.preventDefault(); onSearch($event)">
+        <input class="form-control me-2" type="search" placeholder="Search"
+              [(ngModel)]="searchTerm" (keydown.enter)="$event.preventDefault(); onSearch($event)">
         <button class="btn btn-outline-success" (click)="onSearch()">Search</button>
       </div>
 
